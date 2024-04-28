@@ -9,6 +9,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                sh('cd ExpressDockerfile')
                 sh('npm install')
             }
         }
