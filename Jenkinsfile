@@ -15,8 +15,6 @@ pipeline {
         stage('Test') {
             steps {
                 npm test
-                mvn clean package
-
             }
         }
         stage('Build Docker Image') {
