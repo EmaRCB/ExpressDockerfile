@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                sh('echo "Clonando"')
+                echo "Clonando"
             }
         }
         stage('Build') {
