@@ -4,28 +4,28 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                echo "Clonando"
+                sh('echo "Clonando"')
             }
         }
         stage('Build') {
             steps {
-                npm install
+                sh('npm install')
             }
         }
         stage('Test') {
             steps {
-                npm test
+                sh('npm test')
             }
         }
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                docker build -t mi-aplicacion .
+                sh('docker build -t mi-aplicacion .')
             }
         }
         stage('Push Docker Image') {
             steps {
                 // Asume que ya has iniciado sesión en tu registro de Docker (docker login)
-                docker push mi-aplicacion
+                sh('docker push mi-aplicacion')
             }
         }
     }
