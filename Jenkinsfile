@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                sh 'git clone https://github.com/EmaRCB/ExpressDockerfile.git'
+                echo "Clonando"
             }
         }
         stage('Build') {
