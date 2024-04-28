@@ -17,7 +17,7 @@ pipeline {
                 sh('npm test')
             }
         }
-        stage('Build') {
+        stage('Build docker') {
             steps {
                 sh('docker build -t mi-aplicacion .')
             }
