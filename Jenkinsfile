@@ -7,21 +7,18 @@ pipeline {
                 echo "Clonando"
             }
         }
-        stage('Build') {
-            steps {
-                sh('cd ExpressDockerfile')
-                sh('npm install')
-            }
-        }
-        stage('Test') {
-            steps {
-                sh('npm test')
-            }
-        }
         stage('Build docker') {
             steps {
                 sh('docker build -t sicei .')
-                sh('docker push sicei')
+                sh('docker image ls')
+            }
+        }
+        stage('Run docker') {
+            steps {
+                sh('docker container stop sicei-container || true')
+                sh('docker container rm sicei-container || true')
+                sh('docker run -dp 8000:8000 --name "sicei-container" sicei')
+                sh('docker container ls')
             }
         }
     }
